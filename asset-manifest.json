@@ -1,0 +1,39 @@
+{
+  "files": {
+    "static/js/0.68720d5d.chunk.js": "/networkk/static/js/0.68720d5d.chunk.js",
+    "static/js/0.68720d5d.chunk.js.map": "/networkk/static/js/0.68720d5d.chunk.js.map",
+    "main.css": "/networkk/static/css/main.eaf04e53.chunk.css",
+    "main.js": "/networkk/static/js/main.0a679263.chunk.js",
+    "main.js.map": "/networkk/static/js/main.0a679263.chunk.js.map",
+    "runtime-main.js": "/networkk/static/js/runtime-main.08061784.js",
+    "runtime-main.js.map": "/networkk/static/js/runtime-main.08061784.js.map",
+    "static/js/3.71e9315b.chunk.js": "/networkk/static/js/3.71e9315b.chunk.js",
+    "static/js/3.71e9315b.chunk.js.map": "/networkk/static/js/3.71e9315b.chunk.js.map",
+    "static/css/4.655c4cf6.chunk.css": "/networkk/static/css/4.655c4cf6.chunk.css",
+    "static/js/4.3ff15529.chunk.js": "/networkk/static/js/4.3ff15529.chunk.js",
+    "static/js/4.3ff15529.chunk.js.map": "/networkk/static/js/4.3ff15529.chunk.js.map",
+    "static/css/5.50861bb2.chunk.css": "/networkk/static/css/5.50861bb2.chunk.css",
+    "static/js/5.ec4ea01c.chunk.js": "/networkk/static/js/5.ec4ea01c.chunk.js",
+    "static/js/5.ec4ea01c.chunk.js.map": "/networkk/static/js/5.ec4ea01c.chunk.js.map",
+    "static/css/6.c6b368b5.chunk.css": "/networkk/static/css/6.c6b368b5.chunk.css",
+    "static/js/6.706f0c68.chunk.js": "/networkk/static/js/6.706f0c68.chunk.js",
+    "static/js/6.706f0c68.chunk.js.map": "/networkk/static/js/6.706f0c68.chunk.js.map",
+    "index.html": "/networkk/index.html",
+    "static/css/4.655c4cf6.chunk.css.map": "/networkk/static/css/4.655c4cf6.chunk.css.map",
+    "static/css/5.50861bb2.chunk.css.map": "/networkk/static/css/5.50861bb2.chunk.css.map",
+    "static/css/6.c6b368b5.chunk.css.map": "/networkk/static/css/6.c6b368b5.chunk.css.map",
+    "static/css/main.eaf04e53.chunk.css.map": "/networkk/static/css/main.eaf04e53.chunk.css.map",
+    "static/js/3.71e9315b.chunk.js.LICENSE.txt": "/networkk/static/js/3.71e9315b.chunk.js.LICENSE.txt",
+    "static/media/logo.0010b5e9.png": "/networkk/static/media/logo.0010b5e9.png",
+    "static/media/preloader.79a159df.gif": "/networkk/static/media/preloader.79a159df.gif",
+    "static/media/upload.b969462c.png": "/networkk/static/media/upload.b969462c.png",
+    "static/media/user.png": "/networkk/static/media/user.996a92ae.png",
+    "static/media/user.ff616b29.jpg": "/networkk/static/media/user.ff616b29.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.08061784.js",
+    "static/js/3.71e9315b.chunk.js",
+    "static/css/main.eaf04e53.chunk.css",
+    "static/js/main.0a679263.chunk.js"
+  ]
+}
