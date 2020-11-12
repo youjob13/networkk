@@ -1,0 +1,46 @@
+.loginPage {
+  display: flex;
+  flex-wrap: nowrap;
+  text-align: center;
+  align-items: center;
+  height: 90vh;
+  justify-content: center;
+}
+.loginPage h1 {
+  margin-right: 80px;
+  font-weight: 700;
+  font-size: 45px;
+}
+.input {
+  padding: 10px 15px;
+  font-size: 18px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 2px;
+}
+.input:focus {
+  outline: none;
+}
+.checkbox {
+  font-weight: 700;
+}
+.signIn {
+  margin-top: 40px;
+  color: rgb(9, 42, 58);
+  font-weight: 700;
+  cursor: pointer;
+  background-color: inherit;
+  border: 2px solid black;
+  border-radius: 2px;
+  padding: 5px 10px;
+  font-size: 15px;
+  transition: 0.2s;
+  box-shadow: 0px 2px 8px rgb(202, 200, 200);
+}
+.signIn:hover {
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #fff;
+  border: 2px solid #fff;
+  color: black;
+  padding: 15px;
+}

@@ -1,0 +1,18 @@
+.dialogsItems {
+  padding: 10px;
+}
+.dialog {
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+}
+.dialogItem {
+  font-weight: bold;
+  color: rgb(40, 40, 40);
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}

@@ -1,0 +1,150 @@
+.socialLink {
+  color: #212881 !important;
+}
+.contacts {
+  padding-left: 5px;
+}
+.statusInput {
+  margin: 0;
+  padding: 0;
+}
+
+.profileInfo {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.active {
+  visibility: visible;
+  opacity: 1;
+}
+@media (max-width: 1128px) {
+  .profileInfo {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+@media (max-width: 920px) {
+  .profileInfo {
+    grid-template-columns: 6fr 6fr;
+  }
+  .profileUserInfo {
+    display: block;
+    margin: auto;
+  }
+}
+.userPhoto {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  max-width: 250px;
+  max-height: 250px;
+  padding: 6px;
+  background-color: #33cccc;
+}
+.userPhoto:hover .inputWrapper {
+  opacity: 0.9;
+  visibility: visible;
+  bottom: 0%;
+}
+.inputWrapper {
+  transition: 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  z-index: 11;
+  text-align: center;
+}
+
+.inputFile {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.inputFileIconWrapper {
+  height: 60px;
+  width: 60px;
+  margin-right: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-right: 1px solid #fff;
+}
+
+.inputFileButtonText {
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.inputFileButton {
+  width: 100%;
+  max-width: 290px;
+  height: 60px;
+  background: #1bbc9b;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.information {
+  display: flex;
+  justify-content: space-between;
+}
+.btnChangeInfo,
+.btnContacts,
+.btnSaveEdit {
+  padding: 3px 20px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #33cccc;
+  border: none;
+  border-radius: 2px;
+}
+.btnContacts {
+  margin-left: 30px;
+}
+.btnChangeInfo {
+  height: 30px;
+}
+.btnSaveEdit {
+  position: relative;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+}
+.btnChangeInfo:focus,
+.btnContacts:focus,
+.btnSaveEdit:focus {
+  outline: none;
+}
+.inputInfo {
+  border: 2px solid #33cccc;
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 2px;
+}

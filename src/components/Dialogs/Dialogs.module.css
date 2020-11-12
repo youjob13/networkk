@@ -1,0 +1,47 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+.dialogsItems {
+  position: relative;
+}
+.dialogsItems:before {
+  content: "";
+  position: absolute;
+  right: 0%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: rgb(31, 118, 153);
+}
+.messagesBlock {
+  padding: 10px;
+  margin-left: 20px;
+}
+.messages {
+  margin-bottom: 20px;
+}
+.textarea {
+  border-radius: 4px;
+  border: 2px solid #999ef2;
+  min-width: 200px;
+  min-height: 50px;
+}
+.textarea:focus,
+.sendMessage:focus {
+  outline: none;
+}
+.sendMessage {
+  border: none;
+  background-color: #999ef2;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 4px 7px;
+}
+
+@media (max-width: 1100px) {
+  .dialogs {
+    grid-template-columns: 4fr 8fr;
+  }
+}

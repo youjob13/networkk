@@ -1,0 +1,30 @@
+.item {
+  display: flex;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+.item img {
+  height: 60px;
+  width: 60px;
+}
+.message {
+  margin-left: 15px;
+}
+.messageText {
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.messageText:before {
+  content: "";
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  background-color: #fff;
+  bottom: -15px;
+  left: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 17px;
+}

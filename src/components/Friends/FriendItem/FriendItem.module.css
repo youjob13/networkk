@@ -1,0 +1,10 @@
+.friendItem {
+  cursor: pointer;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: rgb(41, 40, 40);
+  display: block;
+}
+.friendItem:hover {
+  color: black;
+}

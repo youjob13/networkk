@@ -1,0 +1,13 @@
+.pagination {
+  text-align: center;
+}
+.pagination span {
+  cursor: pointer;
+  margin: 0 5px;
+}
+.selectedPage {
+  font-weight: bold;
+}
+.page {
+  font-weight: normal;
+}

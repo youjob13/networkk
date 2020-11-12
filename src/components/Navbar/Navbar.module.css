@@ -1,0 +1,13 @@
+.nav {
+  padding: 12px 20px;
+  background-color: #33cccc;
+  grid-area: nav;
+}
+.item {
+  font-weight: bold;
+  padding: 4px 0;
+  color: #fff;
+}
+.item:hover a {
+  color: #064769;
+}

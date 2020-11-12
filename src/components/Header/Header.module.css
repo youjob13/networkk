@@ -1,0 +1,44 @@
+.header {
+  padding: 10px;
+  padding-left: 30px;
+  background-color: #33cccc;
+  grid-area: header;
+}
+.header img {
+  max-width: 40px;
+}
+
+.loginBlock {
+  color: rgb(9, 42, 58);
+  font-weight: 700;
+  float: right;
+  display: flex;
+  flex: 0 0 33.3333%;
+  align-items: center;
+}
+.item {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+.item img {
+  margin-left: 20px;
+}
+.logout {
+  color: rgb(9, 42, 58);
+  font-weight: 700;
+  cursor: pointer;
+  background-color: inherit;
+  border: 2px solid black;
+  border-radius: 2px;
+  padding: 5px 10px;
+  font-size: 15px;
+  transition: 0.2s;
+  box-shadow: 0px 2px 8px rgb(202, 200, 200);
+}
+.logout:hover {
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #fff;
+  border: 2px solid #fff;
+  color: black;
+}
