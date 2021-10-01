@@ -1,6 +1,6 @@
-const SEND_MESSAGE = "dialogs/SEND-MESSAGE";
+import {DialogsActionTypes, DialogsState, SendMessageActionType} from "../shared/models/store";
 
-const initialState = {
+const initialState: DialogsState = {
   dialogsData: [
     { id: 1, name: "Viktor" },
     {
@@ -32,14 +32,14 @@ const initialState = {
   ],
 };
 
-const dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action: any): DialogsState => {
   switch (action.type) {
-    case SEND_MESSAGE: {
+    case DialogsActionTypes.SEND_MESSAGE: {
       return {
         ...state,
         messagesData: [
           ...state.messagesData,
-          { id: 4, message: action.newMessage },
+          { id: 4, message: action.payload.newMessage },
         ],
       };
     }
@@ -48,10 +48,11 @@ const dialogsReducer = (state = initialState, action) => {
     }
   }
 };
+
 //action creator
-export const sendMessage = (newMessage) => ({
-  type: SEND_MESSAGE,
-  newMessage,
+export const sendMessage = (newMessage: string): SendMessageActionType => ({
+  type: DialogsActionTypes.SEND_MESSAGE,
+  payload: {newMessage},
 });
 
 export default dialogsReducer;

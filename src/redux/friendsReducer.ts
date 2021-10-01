@@ -1,4 +1,6 @@
-const initialState = {
+import {FriendsState} from "../shared/models/store";
+
+const initialState: FriendsState = {
   friends: [
     {
       id: 1,
@@ -23,7 +25,7 @@ const initialState = {
   ],
 };
 
-const friendsProducer = (state = initialState, action) => {
+const friendsProducer = (state = initialState, action: any): FriendsState => {
   return state;
 };
 
