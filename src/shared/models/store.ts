@@ -54,6 +54,7 @@ type MessageType = { id: number; message: string };
 type DialogType = { id: number; name: string };
 
 export type DialogsSelectorState = { dialogsPage: DialogsState };
+export type FriendsSelectorState = { friendsPage: FriendsState };
 
 export interface DialogsState {
   dialogsData: DialogType[];

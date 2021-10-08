@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { logoutThunkCreator } from "../../redux/authReducer";
 import Header from "./Header";
 
-const mapStateToProps = ({ auth }) => ({
+const mapStateToProps = ({ auth }: any) => ({
   isAuth: auth.isAuth,
   login: auth.login,
   photo: auth.photo,

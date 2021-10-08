@@ -22,17 +22,9 @@
     ],
     "rules": {
       "no-use-before-define": "off",
-      "prettier/prettier": ["error"],
       "@typescript-eslint/no-use-before-define": ["error"],
       "react/jsx-filename-extension": [ "warn", {"extensions": [".tsx"]} ],
-      "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-          "ts": "never",
-          "tsx": "never"
-        }
-      ],
+      "import/extensions": "off",
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": "off",
       "@typescript-eslint/explicit-function-return-type": [
@@ -44,7 +36,11 @@
       "import/prefer-default-export": "off",
       "react/jsx-props-no-spreading": "off",
       "jsx-a11y/click-events-have-key-events": "off",
-      "jsx-a11y/interactive-supports-focus": "off"
+      "jsx-a11y/interactive-supports-focus": "off",
+      "arrow-body-style": "off",
+      "react/prefer-stateless-function": "off",
+      "jsx-a11y/no-autofocus": "off",
+      "jsx-a11y/label-has-associated-control": "off"
     },
     "settings": {
       "import/resolver": {

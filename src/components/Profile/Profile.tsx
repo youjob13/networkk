@@ -1,9 +1,6 @@
 import React from "react";
-
 import { MyPostsContainer } from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-
-import classes from "./Profile.module.css";
 import Preloader from "../common/Preloader/Preloader";
 
 const Profile = ({
@@ -13,10 +10,11 @@ const Profile = ({
   profile,
   status,
   updateStatus,
-}) => {
+}: any) => {
   if (!profile) {
     return <Preloader />;
   }
+
   return (
     <div>
       <ProfileInfo

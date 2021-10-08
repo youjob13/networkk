@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import Preloader from "../../common/Preloader/Preloader";
+import React, { FormEvent, useEffect, useState } from "react";
 import classes from "./ProfileInfo.module.css";
 
-const ProfileStatusWithHooks = (props) => {
+const ProfileStatusWithHooks = ({ status, updateStatus }: any) => {
   const [editMode, setEditMode] = useState(false);
-  const [status, setStatus] = useState(props.status);
+  const [updatedStatus, setStatus] = useState(status);
 
   useEffect(() => {
-    setStatus(props.status);
-  }, [props.status]);
+    setStatus(status);
+  }, [status]);
 
-  const activateEditMode = () => {
+  const activateEditMode = (): void => {
     setEditMode(true);
   };
-  const deactivateEditMode = () => {
+  const deactivateEditMode = (): void => {
     setEditMode(false);
-    props.updateStatus(status);
+    updateStatus(updatedStatus);
   };
-  const onStatusChange = (e) => {
-    setStatus(e.currentTarget.value);
+  const onStatusChange = (event: FormEvent): void => {
+    const target = event.currentTarget as HTMLInputElement;
+    setStatus(target.value);
   };
-  // if (isFetching) return <Preloader />;
+
   return (
     <p>
       {!editMode && (
@@ -29,7 +29,7 @@ const ProfileStatusWithHooks = (props) => {
             className={classes.statusInput}
             onDoubleClick={activateEditMode}
           >
-            {props.status || "----"}
+            {status || "----"}
           </span>
         </div>
       )}
@@ -39,7 +39,7 @@ const ProfileStatusWithHooks = (props) => {
             onChange={onStatusChange}
             autoFocus
             onBlur={deactivateEditMode}
-            value={status}
+            value={updatedStatus}
           />
         </div>
       )}

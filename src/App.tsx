@@ -15,29 +15,36 @@ import Preloader from "./components/common/Preloader/Preloader";
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer")
 );
+
 const ProfileContainer = React.lazy(() =>
   import("./components/Profile/ProfileContainer")
 );
+
 const Login = React.lazy(() => import("./components/Login/Login"));
 
 class App extends React.Component {
-  catchAllUnhandledErrors = (PromiseRejectionEvent) => {
-    console.log(PromiseRejectionEvent);
-
-    alert("Some Error");
-  };
   componentDidMount() {
-    this.props.initializeApp();
+    // eslint-disable-next-line , react/prop-types
+    (this.props as any).initializeApp();
     window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
+
   componentWillUnmount() {
     window.removeEventListener(
       "unhandledrejection",
       this.catchAllUnhandledErrors
     );
   }
+
+  catchAllUnhandledErrors = (PromiseRejectionEvent: PromiseRejectionEvent) => {
+    console.log(PromiseRejectionEvent);
+
+    alert("Some Error");
+  };
+
   render() {
-    if (!this.props.initialized) return <Preloader />;
+    // eslint-disable-next-line react/prop-types
+    if (!(this.props as any).initialized) return <Preloader />;
     return (
       <div className="app-wrapper">
         <HeaderContainer />
@@ -62,7 +69,9 @@ class App extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ app }) => ({
+
+const mapStateToProps = ({ app }: any) => ({
   initialized: app.initialized,
 });
+
 export default connect(mapStateToProps, { initializeApp })(App);

@@ -11,9 +11,9 @@
 // };
 import {
   DialogsSelectorState,
-  DialogsState,
+  DialogsState, FriendsSelectorState, FriendsState,
   UsersSelectorState,
-} from '../shared/models/store';
+} from "../shared/models/store";
 
 export const getTotalUsersCount = (state: UsersSelectorState): number | null =>
   state.usersPage.totalUsersCount;
@@ -25,3 +25,5 @@ export const getFollowingInProgress = (state: UsersSelectorState): number[] =>
   state.usersPage.followingInProgress;
 export const getDialogsPage = (state: DialogsSelectorState): DialogsState =>
   state.dialogsPage;
+export const getFriendsPage = (state: FriendsSelectorState): FriendsState =>
+  state.friendsPage;

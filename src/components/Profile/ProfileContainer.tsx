@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
@@ -12,30 +11,41 @@ import {
 } from "../../redux/profileReducer";
 import Profile from "./Profile";
 
-const ProfileContainer = (props) => {
+const ProfileContainer = (props: any) => {
   useEffect(() => {
-    let userId = props.match.params.userId;
+    let {userId} = props.match.params;
+
     if (!userId) {
       userId = props.authorizedUserId;
-      if (!userId) props.history.push("/login");
+
+      if (!userId) {
+        props.history.push("/login");
+      }
     }
+
     props.getProfile(userId);
     props.getStatus(userId);
+    // eslint-disable-next-line react/destructuring-assignment
   }, [props.match.params.userId, props.isAuth]);
 
   return (
     <Profile
+      // eslint-disable-next-line react/destructuring-assignment
       saveProfile={props.saveProfile}
+      // eslint-disable-next-line react/destructuring-assignment
       isOwner={!props.match.params.userId}
       {...props}
+      // eslint-disable-next-line react/destructuring-assignment
       status={props.status}
+      // eslint-disable-next-line react/destructuring-assignment
       savePhoto={props.savePhoto}
-      updateStatus={props.updateStatus}
+      // eslint-disable-next-line react/destructuring-assignment
+      updateStatus={props.updateStatus} // TODO: destructor
     />
   );
 };
 
-const mapStateToProps = ({ profilePage, auth }) => ({
+const mapStateToProps = ({ profilePage, auth }: any) => ({
   profile: profilePage.profile,
   status: profilePage.status,
   authorizedUserId: auth.userId,
@@ -51,4 +61,4 @@ export default compose(
     saveProfile,
   }),
   withRouter
-)(ProfileContainer);
+)(ProfileContainer) as any;

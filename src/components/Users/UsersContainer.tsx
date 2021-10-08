@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import {
@@ -12,28 +11,30 @@ import {
 
 import Preloader from "../common/Preloader/Preloader";
 import Users from "./Users";
+import { UsersSelectorState } from "../../shared/models/store";
 
-const UsersContainer = (props) => {
+const UsersContainer = ({ currentPage,pageSize,isFetching, pageNumber }: any): ReactElement => {
+  const p ={ currentPage,pageSize,isFetching }; // TODO: remove
   useEffect(() => {
-    props.getUsersThunkCreator(props.currentPage, props.pageSize);
-  }, [props.currentPage, props.pageSize]);
+    getUsersThunkCreator(currentPage, pageSize);
+  }, [currentPage, pageSize]);
 
-  const changeCurrentPage = (pageNumber) => {
-    props.getUsersThunkCreator(pageNumber, props.pageSize);
+  const changeCurrentPage = (gettingPageNumber: number) => {
+    getUsersThunkCreator(pageNumber, pageSize);
   };
 
-  if (props.isFetching) {
-      return <Preloader />;
+  if (isFetching) {
+    return <Preloader />;
   }
 
   return (
     <>
-      <Users {...props} changeCurrentPage={changeCurrentPage} />
+      <Users {...p} changeCurrentPage={changeCurrentPage} />
     </>
   );
 };
 
-const mapStateToProps = ({ usersPage }) => ({
+const mapStateToProps = ({ usersPage }: UsersSelectorState) => ({
   usersData: usersPage.usersData,
   pageSize: usersPage.pageSize,
   totalUsersCount: usersPage.totalUsersCount,

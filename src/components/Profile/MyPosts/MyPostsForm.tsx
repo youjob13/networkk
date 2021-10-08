@@ -9,9 +9,9 @@ import classes from "./MyPosts.module.css";
 
 const maxLength150 = maxLengthCreator(150);
 
-const MyPostsForm = (props) => {
+const MyPostsForm = ({ handleSubmit }: any) => {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
         <Field
           name="newPostText"
@@ -22,7 +22,7 @@ const MyPostsForm = (props) => {
         />
       </div>
       <div>
-        <button className={classes.addPost}>Add post</button>
+        <button type="button" className={classes.addPost}>Add post</button>
       </div>
     </form>
   );

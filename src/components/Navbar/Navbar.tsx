@@ -1,9 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
-
 import classes from "./Navbar.module.css";
 
-const Navbar = () => (
+const Navbar = (): ReactElement => (
   <nav className={classes.nav}>
     <div className={classes.item}>
       <NavLink to="/profile">Profile</NavLink>

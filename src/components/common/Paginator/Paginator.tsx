@@ -7,7 +7,7 @@ export interface PaginatorProps {
   currentPage: number;
   pageSize: number;
   changeCurrentPage: any;
-  portionSize: number;
+  portionSize?: number;
 }
 
 const Paginator = ({

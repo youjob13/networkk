@@ -4,10 +4,11 @@ import { MyPostsReduxForm } from "./MyPostsForm";
 import Post from "./Post/Post";
 import classes from "./MyPosts.module.css";
 
-const MyPosts = React.memo(({ addPost, postData, photo }) => {
-  const addNewPost = (values) => {
+const MyPosts = React.memo(({ addPost, postData, photo }: any) => {
+  const addNewPost = (values: any) => {
     addPost(values.newPostText);
   };
+
   return (
     <div className={classes.postsBlock}>
       <h3>My posts</h3>

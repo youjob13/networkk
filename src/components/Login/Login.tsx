@@ -1,33 +1,14 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 import { loginThunkCreator } from "../../redux/authReducer";
 import { required } from "../../utils/validators/validators";
 import { Input } from "../common/FormsControls/FormsControls";
-
 import classes from "../common/FormsControls/FormControls.module.css";
 import style from "./Login.module.css";
 
-const Login = ({ loginThunkCreator, isAuth, captchaUrl }) => {
-  const onSubmit = (formData) => {
-    loginThunkCreator(
-      formData.email,
-      formData.password,
-      formData.rememberMe,
-      formData.captcha
-    );
-  };
-  if (isAuth) return <Redirect to="/profile" />;
-  return (
-    <div className={style.loginPage}>
-      <h1>Login</h1>
-      <LoginReduxForm captchaUrl={captchaUrl} onSubmit={onSubmit} />
-    </div>
-  );
-};
-
-const LoginForm = ({ handleSubmit, error, captchaUrl }) => (
+const LoginForm = ({ handleSubmit, error, captchaUrl }: any): ReactElement => (
   <form onSubmit={handleSubmit}>
     <div>
       <Field
@@ -60,7 +41,7 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => (
         RememberMe
       </label>
     </div>
-    {captchaUrl && <img src={captchaUrl} />}
+    {captchaUrl && <img src={captchaUrl} alt=""/>}
     {captchaUrl && (
       <Field
         className={style.input}
@@ -72,13 +53,32 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => (
     )}
     {error && <div className={classes.formSummaryError}>{error}</div>}
     <div>
-      <button className={style.signIn}>Sign In</button>
+      <button type="button" className={style.signIn}>Sign In</button>
     </div>
   </form>
 );
 
-const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
-const mapStateToProps = ({ auth }) => ({
+const LoginReduxForm = reduxForm({ form: "login" })(LoginForm) as any;
+
+const Login = ({ loginThunkCreator, isAuth, captchaUrl }: any) => {
+  const onSubmit = (formData: any) => {
+    loginThunkCreator(
+      formData.email,
+      formData.password,
+      formData.rememberMe,
+      formData.captcha
+    );
+  };
+  if (isAuth) return <Redirect to="/profile" />;
+  return (
+    <div className={style.loginPage}>
+      <h1>Login</h1>
+      <LoginReduxForm captchaUrl={captchaUrl} onSubmit={onSubmit} />
+    </div>
+  );
+};
+
+const mapStateToProps = ({ auth }: any) => ({
   isAuth: auth.isAuth,
   captchaUrl: auth.captchaUrl,
 });
