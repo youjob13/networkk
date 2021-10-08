@@ -1,9 +1,8 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { ReactElement } from 'react';
+import { NavLink } from 'react-router-dom';
+import classes from './DialogItem.module.css';
 
-import classes from "./DialogItem.module.css";
-
-const DialogItem = ({ name, id }) => (
+const DialogItem = ({ name, id }: any): ReactElement => (
   <div className={`${classes.dialog}`}>
     <img
       className={classes.avatar}
@@ -15,4 +14,5 @@ const DialogItem = ({ name, id }) => (
     </NavLink>
   </div>
 );
+
 export default DialogItem;

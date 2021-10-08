@@ -1,6 +1,6 @@
 import React from "react";
 
-import User from "./User.jsx";
+import User from "./User.tsx";
 import Paginator from "../common/Paginator/Paginator";
 
 import classes from "./Users.module.css";
@@ -15,6 +15,7 @@ const Users = ({
   unfollowThunkCreator,
   followingInProgress,
 }) => {
+    console.log(usersData)
   return (
     <div className={classes.users}>
       <Paginator

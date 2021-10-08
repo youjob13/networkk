@@ -1,19 +1,20 @@
-import React from "react";
-import classes from "./FormControls.module.css";
+import React, { ReactElement } from 'react';
+import classes from './FormControls.module.css';
 
-const FormControl = ({ meta: { touched, error }, children }) => {
+const FormControl = ({
+  meta: { touched, error },
+  children,
+}: any): ReactElement => {
   const hasError = touched && error;
   return (
-    <div
-      className={classes.formControl + " " + (hasError ? classes.error : "")}
-    >
+    <div className={`${classes.formControl} ${hasError ? classes.error : ''}`}>
       <div>{children}</div>
       {hasError && <span>{error}</span>}
     </div>
   );
 };
 
-export const Input = (props) => {
+export const Input = (props: any): ReactElement => {
   const { input, meta, ...restProps } = props;
   return (
     <FormControl {...props}>
@@ -22,7 +23,7 @@ export const Input = (props) => {
   );
 };
 
-export const Textarea = (props) => {
+export const Textarea = (props: any): ReactElement => {
   const { input, meta, ...restProps } = props;
   return (
     <FormControl {...props}>

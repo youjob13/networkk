@@ -3,16 +3,14 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { withLazyLoading } from "./hoc/withLazyLoading";
 import { initializeApp } from "./redux/appReducer";
-
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-
 import "./App.css";
-import Preloader from "./components/common/preloader/Preloader";
+import Preloader from "./components/common/Preloader/Preloader";
 
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer")

@@ -1,15 +1,15 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { ReactElement } from 'react';
+import { NavLink } from 'react-router-dom';
 
-import userPhoto from "../../assests/img/user.jpg";
-import classes from "./Users.module.css";
+import userPhoto from '../../assests/img/user.jpg';
+import classes from './Users.module.css';
 
 const Users = ({
   item,
   followThunkCreator,
   unfollowThunkCreator,
   followingInProgress,
-}) => (
+}: any): ReactElement => (
   <div className={classes.userBlock} key={item.id}>
     <div className={classes.userItem}>
       <NavLink to={`/profile/${item.id}`}>
@@ -21,7 +21,8 @@ const Users = ({
       </NavLink>
       {item.followed ? (
         <button
-          disabled={followingInProgress.some((id) => id === item.id)}
+          type="button"
+          disabled={followingInProgress.some((id: any) => id === item.id)}
           className={`${classes.followed} ${classes.unfollow}`}
           onClick={() => {
             unfollowThunkCreator(item.id);
@@ -31,7 +32,8 @@ const Users = ({
         </button>
       ) : (
         <button
-          disabled={followingInProgress.some((id) => id === item.id)}
+          type="button"
+          disabled={followingInProgress.some((id: any) => id === item.id)}
           className={`${classes.followed} ${classes.follow}`}
           onClick={() => {
             followThunkCreator(item.id);
@@ -52,10 +54,10 @@ const Users = ({
       </span>
       <span>
         <p>
-          <strong>Country:</strong> {"item.country"}
+          <strong>Country:</strong> item.country
         </p>
         <p>
-          <strong>City:</strong> {"item.city"}
+          <strong>City:</strong> item.city
         </p>
       </span>
     </div>

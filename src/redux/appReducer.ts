@@ -1,6 +1,10 @@
-import {getAuthorizationThunkCreator} from "./authReducer";
-import {AppActionTypes, AppState, InitializedSuccessActionType} from "../shared/models/store";
-import {Action} from "redux";
+import { Action } from 'redux';
+import { getAuthorizationThunkCreator } from './authReducer';
+import {
+  AppActionTypes,
+  AppState,
+  InitializedSuccessActionType,
+} from '../shared/models/store';
 
 const initialState: AppState = {
   initialized: false,
@@ -20,11 +24,11 @@ const appReducer = (state = initialState, action: any): AppState => {
   }
 };
 
-//actionCreator
+// actionCreator
 export const initializedSuccess = (): InitializedSuccessActionType => ({
   type: AppActionTypes.INITIALIZED_SUCCESS,
 });
-//thunkCreator
+// thunkCreator
 export const initializeApp = () => (dispatch: any) => {
   const dispatchResult = dispatch(getAuthorizationThunkCreator());
   Promise.all([dispatchResult]).then(() => {

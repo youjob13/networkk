@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Preloader from "../../common/preloader/Preloader";
+import Preloader from "../../common/Preloader/Preloader";
 import classes from "./ProfileInfo.module.css";
 
 const ProfileStatusWithHooks = (props) => {

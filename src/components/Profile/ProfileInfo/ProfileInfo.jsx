@@ -1,5 +1,5 @@
 import React from "react";
-import Preloader from "../../common/preloader/Preloader";
+import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import classes from "./ProfileInfo.module.css";
 import { UserPhoto } from "../../common/UserPhoto/UserPhoto";

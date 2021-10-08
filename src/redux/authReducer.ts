@@ -1,13 +1,13 @@
-import {authAPI, profileAPI, securityAPI} from "../api/api";
-import photoDefault from "../assests/img/user.png";
+import { stopSubmit } from 'redux-form';
+import { authAPI, profileAPI, securityAPI } from '../api/api';
+import photoDefault from '../assests/img/user.png';
 import {
   AuthActionTypes,
   AuthState,
   GetCaptchaUrlSuccess,
   SetAuthUserDataActionType,
-  SetUserPhotoActionType
-} from "../shared/models/store";
-import {stopSubmit} from "redux-form";
+  SetUserPhotoActionType,
+} from '../shared/models/store';
 
 const initialState: AuthState = {
   userId: null,
@@ -41,32 +41,39 @@ const authReducer = (state = initialState, action: any): AuthState => {
 };
 
 export const setAuthUserData = (
-    userId: number | null,
-    login: string | null,
-    email: string | null,
-    isAuth: boolean
+  userId: number | null,
+  login: string | null,
+  email: string | null,
+  isAuth: boolean,
 ): SetAuthUserDataActionType => ({
   type: AuthActionTypes.SET_USER_DATA,
-  payload: { userId, login, email, isAuth },
-})
+  payload: {
+    userId,
+    login,
+    email,
+    isAuth,
+  },
+});
 
 export const setUserPhoto = (photo: string): SetUserPhotoActionType => ({
   type: AuthActionTypes.SET_USER_PHOTO,
-  payload: {photo},
-})
+  payload: { photo },
+});
 
-export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccess => ({
+export const getCaptchaUrlSuccess = (
+  captchaUrl: string,
+): GetCaptchaUrlSuccess => ({
   type: AuthActionTypes.GET_CAPTCHA_URL_SUCCESS,
   payload: { captchaUrl },
 });
 
-//thunk Creator
+// thunk Creator
 export const getAuthorizationThunkCreator = () => async (dispatch: any) => {
   const data = await authAPI.getAuthorization();
   if (data.resultCode === 0) {
     const { id, login, email } = data.data;
     dispatch(setAuthUserData(id, login, email, true));
-    //if login === true -> setPhotos
+    // if login === true -> setPhotos
     const response = await profileAPI.getProfile(id);
     if (response.photos.small === null) dispatch(setUserPhoto(photoDefault));
     else dispatch(setUserPhoto(response.photos.small));
@@ -74,29 +81,27 @@ export const getAuthorizationThunkCreator = () => async (dispatch: any) => {
   return data;
 };
 
-export const loginThunkCreator = (
-  email: string,
-  password: string,
-  rememberMe: boolean,
-  captcha: any
-) => async (dispatch: any) => {
-  const response = await authAPI.login(email, password, rememberMe, captcha);
-  if (response.data.resultCode === 0) dispatch(getAuthorizationThunkCreator());
-  else {
-    if (response.data.resultCode === 10) dispatch(getCaptchaUrl());
-    const message =
-      response.data.messages.length > 0
-        ? response.data.messages[0]
-        : "Some error";
-    dispatch(stopSubmit("login", { _error: `${message}` }));
-  }
-};
-
 export const getCaptchaUrl = () => async (dispatch: any) => {
   const response = await securityAPI.getCaptchaUrl();
   const captchaUrl = response.data.url;
   dispatch(getCaptchaUrlSuccess(captchaUrl));
 };
+
+export const loginThunkCreator =
+  (email: string, password: string, rememberMe: boolean, captcha: any) =>
+  async (dispatch: any) => {
+    const response = await authAPI.login(email, password, rememberMe, captcha);
+    if (response.data.resultCode === 0)
+      dispatch(getAuthorizationThunkCreator());
+    else {
+      if (response.data.resultCode === 10) dispatch(getCaptchaUrl());
+      const message =
+        response.data.messages.length > 0
+          ? response.data.messages[0]
+          : 'Some error';
+      dispatch(stopSubmit('login', { _error: `${message}` }));
+    }
+  };
 
 export const logoutThunkCreator = () => async (dispatch: any) => {
   const data = await authAPI.logout();

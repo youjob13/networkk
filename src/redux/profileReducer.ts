@@ -1,31 +1,22 @@
-import { stopSubmit } from "redux-form";
-import { profileAPI } from "../api/api";
+import { stopSubmit } from 'redux-form';
+import { profileAPI } from '../api/api';
 import {
   AddPostActionType,
   PhotoType,
+  ProfileActionTypes,
   ProfileState,
-  ProfileType, SavePhotoSuccess, SaveProfileSuccess,
+  ProfileType,
+  SavePhotoSuccess,
+  SaveProfileSuccess,
   SetStatus,
-  SetUserProfile
-} from "../shared/models/store";
-
-const ADD_POST = "profile/ADD-POST";
-const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
-const SET_STATUS = "profile/SET_STATUS";
-const SAVE_PHOTO_SUCCESS = "profile/SAVE_PHOTO_SUCCESS";
-
-export enum ProfileActionTypes {
-  ADD_POST = "profile/ADD-POST",
-  SET_USER_PROFILE = "profile/ADD-SET_USER_PROFILE",
-  SET_STATUS = "profile/SET_STATUS-POST",
-  SAVE_PHOTO_SUCCESS = "profile/SAVE_PHOTO_SUCCESS-POST",
-}
+  SetUserProfile,
+} from '../shared/models/store';
 
 const initialState: ProfileState = {
   postData: [
     {
       id: 1,
-      message: "Hi, nice day",
+      message: 'Hi, nice day',
       likeCount: 15,
     },
     {
@@ -35,7 +26,7 @@ const initialState: ProfileState = {
     },
   ],
   profile: null,
-  status: "1",
+  status: '1',
 };
 
 const profileReducer = (state = initialState, action: any): ProfileState => {
@@ -47,25 +38,28 @@ const profileReducer = (state = initialState, action: any): ProfileState => {
           ...state.postData,
           {
             id: 5,
-            message: action.newPostText,
+            message: action.payload.newPostText,
             likeCount: 0,
           },
         ],
       };
     }
     case ProfileActionTypes.SET_USER_PROFILE: {
-      return { ...state, profile: action.profile };
+      return { ...state, profile: action.payload.profile };
     }
     case ProfileActionTypes.SET_STATUS: {
       return {
         ...state,
-        status: action.status,
+        status: action.payload.status,
       };
     }
     case ProfileActionTypes.SAVE_PHOTO_SUCCESS: {
       return {
         ...state,
-        profile: { ...state.profile, photos: action.payload.photos } as ProfileType, // TODO: remove
+        profile: {
+          ...state.profile,
+          photos: action.payload.photos,
+        } as ProfileType, // TODO: remove
       };
     }
     default: {
@@ -74,27 +68,29 @@ const profileReducer = (state = initialState, action: any): ProfileState => {
   }
 };
 
-//action creator
-export const addPost = (newPostText: string): AddPostActionType =>
-  ({ type: ProfileActionTypes.ADD_POST, payload: {newPostText} });
+// action creator
+export const addPost = (newPostText: string): AddPostActionType => ({
+  type: ProfileActionTypes.ADD_POST,
+  payload: { newPostText },
+});
 export const setUserProfile = (profile: ProfileType): SetUserProfile => ({
   type: ProfileActionTypes.SET_USER_PROFILE,
-  payload: {profile},
+  payload: { profile },
 });
 export const setStatus = (status: string): SetStatus => ({
   type: ProfileActionTypes.SET_STATUS,
-  payload: {status},
+  payload: { status },
 });
 export const savePhotoSuccess = (photos: PhotoType): SavePhotoSuccess => ({
   type: ProfileActionTypes.SAVE_PHOTO_SUCCESS,
-  payload: {photos},
+  payload: { photos },
 });
 export const saveProfileSuccess = (photos: PhotoType): SaveProfileSuccess => ({
   type: ProfileActionTypes.SAVE_PHOTO_SUCCESS,
-  payload: {photos},
+  payload: { photos },
 });
 
-//thunk creator
+// thunk creator
 export const getProfile = (userId: number) => async (dispatch: any) => {
   const data = await profileAPI.getProfile(userId);
   dispatch(setUserProfile(data));
@@ -115,17 +111,20 @@ export const savePhoto = (file: any) => async (dispatch: any) => {
   const data = await profileAPI.savePhoto(file);
   if (data.resultCode === 0) dispatch(savePhotoSuccess(data.data.photos));
 };
-export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
-  const userId = getState().auth.userId;
-  const data = await profileAPI.saveProfile(profile);
-  if (data.resultCode === 0) dispatch(getProfile(userId));
-  else {
-    const message = data.messages[0].replace(/.*\->\W*/gi, "");
-    //сделать подсказку невалидных полей
+export const saveProfile =
+  (profile: ProfileType) =>
+  async (dispatch: any, getState: any): Promise<any> => {
+    const { userId } = getState().auth;
+    const data = await profileAPI.saveProfile(profile);
+    if (data.resultCode === 0) {
+      dispatch(getProfile(userId));
+      return;
+    }
+    const message = data.messages[0].replace(/.*->\W*/gi, '');
+    // сделать подсказку невалидных полей
     // const a = message.slice(0, message.length - 1);
-    dispatch(stopSubmit("profileInfo", { _error: data.messages[0] }));
-    return Promise.reject(data.messages[0]); //??(возвращает ошибку)
-  }
-};
+    dispatch(stopSubmit('profileInfo', { _error: data.messages[0] }));
+    Promise.reject(data.messages[0]); // ??(возвращает ошибку)
+  };
 
 export default profileReducer;

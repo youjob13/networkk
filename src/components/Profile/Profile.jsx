@@ -4,7 +4,7 @@ import { MyPostsContainer } from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 import classes from "./Profile.module.css";
-import Preloader from "../common/preloader/Preloader";
+import Preloader from "../common/Preloader/Preloader";
 
 const Profile = ({
   saveProfile,

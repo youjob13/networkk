@@ -1,32 +1,31 @@
-import {FriendsState} from "../shared/models/store";
+import { FriendsState } from '../shared/models/store';
 
 const initialState: FriendsState = {
   friends: [
     {
       id: 1,
-      name: "Viktor",
+      name: 'Viktor',
     },
     {
       id: 2,
-      name: "Polyna",
+      name: 'Polyna',
     },
     {
       id: 3,
-      name: "Eldar",
+      name: 'Eldar',
     },
     {
       id: 4,
-      name: "Mary",
+      name: 'Mary',
     },
     {
       id: 5,
-      name: "Denis",
+      name: 'Denis',
     },
   ],
 };
 
-const friendsProducer = (state = initialState, action: any): FriendsState => {
-  return state;
-};
+const friendsProducer = (state = initialState, action: any): FriendsState =>
+  state;
 
 export default friendsProducer;

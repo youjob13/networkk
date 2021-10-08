@@ -1,33 +1,37 @@
-import {DialogsActionTypes, DialogsState, SendMessageActionType} from "../shared/models/store";
+import {
+  DialogsActionTypes,
+  DialogsState,
+  SendMessageActionType,
+} from '../shared/models/store';
 
 const initialState: DialogsState = {
   dialogsData: [
-    { id: 1, name: "Viktor" },
+    { id: 1, name: 'Viktor' },
     {
       id: 2,
-      name: "Eldar",
+      name: 'Eldar',
     },
     {
       id: 3,
-      name: "Vladimir",
+      name: 'Vladimir',
     },
     {
       id: 4,
-      name: "Vasya",
+      name: 'Vasya',
     },
   ],
   messagesData: [
     {
       id: 1,
-      message: "Hi, give me money",
+      message: 'Hi, give me money',
     },
     {
       id: 2,
-      message: "We go walk?",
+      message: 'We go walk?',
     },
     {
       id: 3,
-      message: "I, get my money",
+      message: 'I, get my money',
     },
   ],
 };
@@ -49,10 +53,10 @@ const dialogsReducer = (state = initialState, action: any): DialogsState => {
   }
 };
 
-//action creator
+// action creator
 export const sendMessage = (newMessage: string): SendMessageActionType => ({
   type: DialogsActionTypes.SEND_MESSAGE,
-  payload: {newMessage},
+  payload: { newMessage },
 });
 
 export default dialogsReducer;
